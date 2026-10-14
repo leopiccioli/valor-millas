@@ -359,31 +359,6 @@
       "reference_cents_per_point": 0.005
     },
     {
-      "id": "latam-pass",
-      "name": "LATAM Pass",
-      "unit": "milla",
-      "market": "AR",
-      "website": "https://www.latamairlines.com/ar/es/latam-pass",
-      "expiry": {
-        "rule": "Consultar en el programa.",
-        "source": "https://www.latamairlines.com/ar/es/latam-pass"
-      },
-      "alternatives": [],
-      "transfers": [
-        {
-          "to": "shell-box",
-          "from_points": 1,
-          "to_points": 6,
-          "date": "2026-10-14",
-          "source": "https://shellbox.shell.com.ar/conversor",
-          "author": "leopiccioli",
-          "notes": "1 milla LATAM Pass = 6 puntos Shell Box."
-        }
-      ],
-      "reference_alternative": null,
-      "reference_cents_per_point": null
-    },
-    {
       "id": "santander-superclub",
       "name": "Santander SuperClub+",
       "unit": "punto",
@@ -642,17 +617,7 @@
           "confidence": 0
         }
       ],
-      "transfers": [
-        {
-          "to": "latam-pass",
-          "from_points": 6,
-          "to_points": 1,
-          "date": "2026-10-14",
-          "source": "https://shellbox.shell.com.ar/conversor",
-          "author": "leopiccioli",
-          "notes": "El conversor muestra '1 milla = 6 puntos' para millas→puntos. La tasa puntos→millas no está publicada en texto; verificar."
-        }
-      ],
+      "transfers": [],
       "reference_alternative": "voucher-nafta",
       "reference_cents_per_point": 0.167
     },

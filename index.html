@@ -44,9 +44,9 @@
 <body>
 <main>
   <h1>Valor real de las millas</h1>
-  <p class="lead">Centavos de dólar por milla o punto, medidos sobre el canje que la gente hace de verdad: precio real de mercado menos tasas, dividido por los puntos. Tocá un programa para ver la cuenta y la fuente. <a href="METODO.md">Método</a> · <a href="https://github.com/leopiccioli/valor-millas">Datos</a></p>
+  <p class="lead">Dólares por cada 1.000 millas o puntos, medidos sobre el canje que la gente hace de verdad: precio real de mercado menos tasas. Tocá un programa para ver la cuenta y la fuente. <a href="METODO.md">Método</a> · <a href="https://github.com/leopiccioli/valor-millas">Datos</a></p>
   <table>
-    <thead><tr><th>Programa</th><th class="num">¢ por punto</th></tr></thead>
+    <thead><tr><th>Programa</th><th class="num">USD / 1.000 puntos</th></tr></thead>
     <tbody id="tb"></tbody>
   </table>
   <div class="foot">
@@ -57,7 +57,7 @@
 <script>
 const fmtUSD = n => n.toLocaleString('es-AR', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
 const fmtN = n => n.toLocaleString('es-AR');
-const cpp = c => c == null ? '—' : c.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: c < 0.1 ? 3 : 2 });
+const cpp = c => c == null ? '—' : (c * 10).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const money = m => `${fmtN(m.amount)} ${m.currency}`;
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const link = s => /^https?:\/\//.test(s) ? `<a href="${esc(s)}" rel="noopener">${esc(s.replace(/^https?:\/\/(www\.)?/, '').slice(0, 55))}${s.length > 63 ? '…' : ''}</a>` : esc(s);
@@ -68,7 +68,7 @@ function calc(m, unit) {
   return `cash    ${money(m.cash)}${ars(m.cash)}
 tasas   ${money(m.fees)}${ars(m.fees)}${m.fees.estimated ? '   ← estimado' : ''}
 puntos  ${fmtN(m.points)}
-<b>(${fmtUSD(m.cash_usd)} − ${fmtUSD(m.fees_usd)}) ÷ ${fmtN(m.points)} = ${cpp(m.cents_per_point)} ¢ por ${unit}</b>`;
+<b>(${fmtUSD(m.cash_usd)} − ${fmtUSD(m.fees_usd)}) ÷ ${fmtN(m.points)} = USD ${cpp(m.cents_per_point)} por 1.000 ${unit}s</b>`;
 }
 
 function detail(p, ref, byId) {
@@ -80,7 +80,7 @@ function detail(p, ref, byId) {
     h += `<div class="src">Cash: ${link(m.cash.source)}${m.cash.note ? ` — ${esc(m.cash.note)}` : ''}</div>`;
     if (m.fees.source) h += `<div class="src">Tasas: ${link(m.fees.source)}${m.fees.note ? ` — ${esc(m.fees.note)}` : ''}</div>`;
     if (m.notes) h += `<div class="src">${esc(m.notes)}</div>`;
-    h += `<div class="src">Medido por ${esc(m.author)} el ${m.date}${m.stale ? ` · <b>vencida</b> (${m.age_days} días)` : ''}.</div>`;
+    h += `<div class="src">Medido por ${esc(m.author)} el ${m.date}.${m.estimated ? ' Tasas estimadas.' : ''}${m.stale ? ` <b>Medición vencida</b> (${m.age_days} días).` : ''}</div>`;
   } else {
     h += `<div class="src">Sin medición de referencia todavía.</div>`;
   }
@@ -92,8 +92,8 @@ function detail(p, ref, byId) {
   });
   if (others.length || xfers.length) {
     h += `<div class="alts">`;
-    for (const a of others) h += `<div><span>${esc(a.label)}${a.latest.estimated ? ' <span class="m">(tasas estimadas)</span>' : ''}${a.latest.stale ? ' <span class="m">(vencida)</span>' : ''}</span><span class="v">${cpp(a.latest.cents_per_point)} ¢</span></div>`;
-    for (const x of xfers) h += `<div><span>${x.label} <span class="m">${x.note}</span></span><span class="v">${x.v != null ? cpp(x.v) + ' ¢' : '—'}</span></div>`;
+    for (const a of others) h += `<div><span>${esc(a.label)}${a.latest.estimated ? ' <span class="m">(tasas estimadas)</span>' : ''}${a.latest.stale ? ' <span class="m">(vencida)</span>' : ''}</span><span class="v">${cpp(a.latest.cents_per_point)}</span></div>`;
+    for (const x of xfers) h += `<div><span>${x.label} <span class="m">${x.note}</span></span><span class="v">${x.v != null ? cpp(x.v) : '—'}</span></div>`;
     h += `</div>`;
   }
   return h;
@@ -108,9 +108,7 @@ async function main() {
   tb.innerHTML = progs.map(p => {
     const ref = p.alternatives.find(a => a.id === p.reference_alternative);
     const m = ref?.latest;
-    const cls = m?.stale ? ' stale' : m?.estimated ? ' warn' : '';
-    const flag = m?.stale ? '<small>vencido</small>' : m?.estimated ? '<small>estimado</small>' : '';
-    return `<tr class="p" data-id="${esc(p.id)}"><td class="name">${esc(short(p.name))}</td><td class="num${cls}">${cpp(p.reference_cents_per_point)}${flag}</td></tr>
+    return `<tr class="p" data-id="${esc(p.id)}"><td class="name">${esc(short(p.name))}</td><td class="num">${cpp(p.reference_cents_per_point)}</td></tr>
       <tr class="d" hidden data-for="${esc(p.id)}"><td colspan="2">${detail(p, ref, byId)}</td></tr>`;
   }).join('');
   tb.addEventListener('click', e => {
