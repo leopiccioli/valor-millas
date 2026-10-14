@@ -7,143 +7,187 @@
 <meta name="description" content="Cuánto vale en dólares cada milla o punto, con el cálculo a la vista y la fuente de cada número. Argentina primero.">
 <style>
   :root {
-    --bg: #faf8f3; --ink: #1b1a17; --muted: #6b675e; --line: #e3dfd5; --card: #ffffff;
+    --bg: #faf8f3; --ink: #1b1a17; --muted: #6b675e; --line: #e3dfd5; --card: #ffffff; --row: #f4f1ea;
     --accent: #0b5fff; --warn: #b45309; --warn-bg: #fff4e0; --stale: #8a1c1c; --stale-bg: #fde8e8; --ok-bg: #e8f3ea;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --bg: #141311; --ink: #ece8df; --muted: #a39d90; --line: #2b2925; --card: #1c1b18;
+      --bg: #141311; --ink: #ece8df; --muted: #a39d90; --line: #2b2925; --card: #1c1b18; --row: #201f1b;
       --accent: #6fa1ff; --warn: #f0b358; --warn-bg: #3a2a10; --stale: #ff9a9a; --stale-bg: #3d1a1a; --ok-bg: #1d2f22;
     }
   }
   :root[data-theme="dark"] {
-    --bg: #141311; --ink: #ece8df; --muted: #a39d90; --line: #2b2925; --card: #1c1b18;
+    --bg: #141311; --ink: #ece8df; --muted: #a39d90; --line: #2b2925; --card: #1c1b18; --row: #201f1b;
     --accent: #6fa1ff; --warn: #f0b358; --warn-bg: #3a2a10; --stale: #ff9a9a; --stale-bg: #3d1a1a; --ok-bg: #1d2f22;
   }
   * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-  main { max-width: 960px; margin: 0 auto; padding: 32px 16px 64px; }
-  h1 { font-size: clamp(28px, 5vw, 40px); margin: 0 0 8px; letter-spacing: -0.02em; }
-  .lead { color: var(--muted); margin: 0 0 28px; max-width: 64ch; }
-  .lead a, a { color: var(--accent); }
-  .formula { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; margin: 0 0 28px; overflow-x: auto; }
-  .meta { color: var(--muted); font-size: 14px; margin-bottom: 16px; }
-  .prog { background: var(--card); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 14px; overflow: hidden; }
-  .prog > summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 1fr auto; gap: 8px 16px; align-items: baseline; padding: 16px 18px; }
-  .prog > summary::-webkit-details-marker { display: none; }
-  .prog > summary .name { font-weight: 600; font-size: 18px; grid-column: 1; grid-row: 1; }
-  .prog > summary .ref { color: var(--muted); font-size: 14px; grid-column: 1; grid-row: 2; }
-  .prog > summary .value { font-size: 28px; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; grid-column: 2; grid-row: 1 / span 2; align-self: center; text-align: right; }
-  .prog > summary .value small { display: block; font-size: 12px; font-weight: 400; color: var(--muted); }
-  .alts { border-top: 1px solid var(--line); padding: 4px 18px 14px; }
-  .alt { padding: 14px 0; border-bottom: 1px dashed var(--line); }
-  .alt:last-child { border-bottom: 0; }
-  .alt-head { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline; }
-  .alt-head .label { font-weight: 600; }
-  .alt-head .cpp { font-variant-numeric: tabular-nums; font-weight: 700; margin-left: auto; }
-  .tag { font-size: 12px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.4 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 1100px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { font-size: 26px; margin: 0 0 4px; letter-spacing: -0.02em; }
+  .lead { color: var(--muted); margin: 0 0 14px; }
+  a { color: var(--accent); }
+  .formula { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; color: var(--muted); margin: 0 0 14px; }
+  .meta { color: var(--muted); font-size: 12px; margin-bottom: 8px; display: flex; gap: 16px; flex-wrap: wrap; }
+  .wrap { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: 8px; }
+  table { border-collapse: collapse; width: 100%; min-width: 820px; table-layout: fixed; }
+  th, td { padding: 7px 10px; text-align: left; vertical-align: top; border-top: 1px solid var(--line); }
+  th { font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); font-weight: 600; border-top: 0; white-space: nowrap; }
+  th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td.cpp { font-weight: 700; font-size: 15px; }
+  td.usd { color: var(--muted); }
+  tr.prog td { border-top: 2px solid var(--line); }
+  tr.prog td.name { font-weight: 600; }
+  tr.alt { cursor: pointer; }
+  tr.alt:hover td { background: var(--row); }
+  tr.alt:not(.prog) td.name { color: var(--muted); padding-left: 22px; white-space: nowrap; }
+  tr.alt:not(.prog) td.name::before { content: "└ "; opacity: .5; }
+  col.c1{width:20%} col.c2{width:37%} col.c3{width:8%} col.c4{width:10%} col.c5{width:9%} col.c6{width:5%} col.c7{width:11%}
+  tr.alt:not(.prog) td.name { white-space: normal; }
+  .tag { display: inline-block; font-size: 11px; line-height: 1.3; padding: 1px 7px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); margin-right: 4px; white-space: nowrap; }
   .tag.ref { background: var(--ok-bg); border-color: transparent; color: var(--ink); }
   .tag.est { background: var(--warn-bg); color: var(--warn); border-color: transparent; }
   .tag.stale { background: var(--stale-bg); color: var(--stale); border-color: transparent; }
-  .calc { margin: 10px 0 0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; color: var(--muted); white-space: pre-wrap; }
-  .calc b { color: var(--ink); font-weight: 600; }
-  .src { font-size: 13px; color: var(--muted); margin-top: 8px; }
-  .src a { word-break: break-all; }
-  .notes { font-size: 13px; margin-top: 6px; }
-  .transfers { font-size: 14px; color: var(--muted); padding: 10px 0 4px; }
-  .foot { margin-top: 36px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); padding-top: 16px; }
-  .cta { display: inline-block; margin-top: 8px; padding: 10px 14px; background: var(--accent); color: #fff; border-radius: 8px; text-decoration: none; font-weight: 600; }
-  .empty { color: var(--muted); font-size: 14px; padding: 10px 0; }
+  tr.detail td { background: var(--row); padding: 10px 14px 12px 32px; font-size: 13px; }
+  tr.detail .calc { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; margin: 0 0 8px; white-space: pre-wrap; color: var(--muted); }
+  tr.detail .calc b { color: var(--ink); }
+  tr.detail .src { color: var(--muted); margin-top: 3px; }
+  tr.detail .src a { word-break: break-all; }
+  tr.detail .notes { margin-top: 6px; }
+  td.date, td.conf { color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  td.conf { text-align: center; }
+  .foot { margin-top: 20px; color: var(--muted); font-size: 13px; display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .cta { display: inline-block; padding: 7px 12px; background: var(--accent); color: #fff; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 13px; }
+  .empty { color: var(--muted); }
 </style>
 </head>
 <body>
 <main>
   <h1>Valor real de las millas</h1>
-  <p class="lead">Cuánto vale en dólares cada milla o punto, medido sobre el canje que la gente hace de verdad, con precio real de mercado, tasas restadas, y la fuente de cada número. Argentina primero. <a href="METODO.md">Método</a> · <a href="https://github.com/leopiccioli/valor-millas">Datos y código</a></p>
-  <div class="formula">valor por punto (USD) = (precio cash del canje − tasas que se pagan igual) ÷ puntos necesarios</div>
+  <p class="lead">Cuánto vale en dólares cada milla o punto, medido sobre el canje que la gente hace de verdad, con precio real de mercado, tasas restadas y fuente. Argentina primero. <a href="METODO.md">Método</a> · <a href="https://github.com/leopiccioli/valor-millas">Datos y código</a></p>
+  <div class="formula">¢ por punto = (precio cash del canje − tasas que se pagan igual) ÷ puntos · pesos a dólar MEP · click en una fila para ver la cuenta</div>
   <div class="meta" id="meta"></div>
-  <div id="list"></div>
+  <div class="wrap">
+    <table id="t">
+      <colgroup><col class="c1"><col class="c2"><col class="c3"><col class="c4"><col class="c5"><col class="c6"><col class="c7"></colgroup>
+      <thead><tr>
+        <th>Programa / canje</th>
+        <th>Detalle</th>
+        <th class="num">¢ / punto</th>
+        <th class="num">USD / 10.000</th>
+        <th>Medido</th>
+        <th style="text-align:center">Conf.</th>
+        <th>Estado</th>
+      </tr></thead>
+      <tbody id="tb"></tbody>
+    </table>
+  </div>
   <div class="foot">
-    <p>¿Mediste un canje? Sumalo: no hace falta saber de GitHub, es un formulario.</p>
     <a class="cta" href="https://github.com/leopiccioli/valor-millas/issues/new?template=medicion.yml">Proponer una medición</a>
-    <p>Las mediciones de más de 90 días se marcan como vencidas. "Confianza" es la cantidad de personas distintas que midieron esa alternativa recientemente. Pesos convertidos a dólar MEP.</p>
+    <span>Vencida = más de 90 días. Conf. = personas distintas que midieron esa alternativa recientemente.</span>
   </div>
 </main>
 <script>
 const fmtUSD = n => n.toLocaleString('es-AR', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
 const fmtN = n => n.toLocaleString('es-AR');
-const cpp = c => c == null ? '—' : c.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 3 }) + ' ¢';
-const money = (m) => `${fmtN(m.amount)} ${m.currency}`;
+const cpp = c => c == null ? '—' : c.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 3 });
+const per10k = c => c == null ? '—' : (c * 100).toLocaleString('es-AR', { minimumFractionDigits: 0, maximumFractionDigits: 1 });
+const money = m => `${fmtN(m.amount)} ${m.currency}`;
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const link = s => /^https?:\/\//.test(s) ? `<a href="${esc(s)}" rel="noopener">${esc(s.replace(/^https?:\/\/(www\.)?/, '').slice(0, 70))}${s.length > 78 ? '…' : ''}</a>` : esc(s);
+const link = s => /^https?:\/\//.test(s) ? `<a href="${esc(s)}" rel="noopener">${esc(s.replace(/^https?:\/\/(www\.)?/, '').slice(0, 60))}${s.length > 68 ? '…' : ''}</a>` : esc(s);
 
-function calcBlock(m) {
-  const fx = m.fx;
-  const ars = x => x.currency === 'ARS' ? ` (÷ ${fmtN(fx.rate)} MEP = ${fmtUSD(x.amount / fx.rate)})` : '';
+function calcBlock(m, unit) {
+  const ars = x => x.currency === 'ARS' ? ` (÷ ${fmtN(m.fx.rate)} MEP = ${fmtUSD(x.amount / m.fx.rate)})` : '';
   return `cash   ${money(m.cash)}${ars(m.cash)}
 tasas  ${money(m.fees)}${ars(m.fees)}${m.fees.estimated ? '  ← estimado' : ''}
 neto   ${fmtUSD(m.net_usd)}
 puntos ${fmtN(m.points)}
-<b>${fmtUSD(m.net_usd)} ÷ ${fmtN(m.points)} = ${cpp(m.cents_per_point)} por ${m.unit}</b>`;
+<b>${fmtUSD(m.net_usd)} ÷ ${fmtN(m.points)} = ${cpp(m.cents_per_point)} ¢ por ${unit}</b>`;
 }
 
-function altHTML(a, unit) {
+function detailHTML(a, unit) {
   const m = a.latest;
-  if (!m) return `<div class="alt"><div class="alt-head"><span class="label">${esc(a.label)}</span><span class="cpp">—</span></div><div class="empty">Sin mediciones todavía.</div></div>`;
-  m.unit = unit;
-  const tags = [
-    a.reference ? '<span class="tag ref">referencia</span>' : '',
-    m.estimated ? '<span class="tag est">tasas estimadas</span>' : '',
-    m.stale ? `<span class="tag stale">vencida · ${m.age_days} días</span>` : `<span class="tag">${m.date}</span>`,
-    `<span class="tag">confianza ${a.confidence}</span>`,
-  ].join('');
-  return `<div class="alt">
-    <div class="alt-head"><span class="label">${esc(a.label)}</span>${tags}<span class="cpp">${cpp(m.cents_per_point)}</span></div>
-    ${m.window ? `<div class="src">Fechas: ${esc(m.window)}</div>` : ''}
-    <pre class="calc">${calcBlock(m)}</pre>
+  return `<div class="calc">${calcBlock(m, unit)}</div>
+    ${m.window ? `<div class="src">Fechas del viaje: ${esc(m.window)}</div>` : ''}
     <div class="src">Fuente cash: ${link(m.cash.source)}${m.cash.note ? ` — ${esc(m.cash.note)}` : ''}</div>
     ${m.fees.source ? `<div class="src">Fuente tasas: ${link(m.fees.source)}${m.fees.note ? ` — ${esc(m.fees.note)}` : ''}</div>` : ''}
-    <div class="src">Dólar ${esc(fx(m))}</div>
+    <div class="src">Dólar ${esc(m.fx.type)} ${fmtN(m.fx.rate)} (${m.fx.date}, ${esc(m.fx.source.replace(/^https?:\/\//, ''))})</div>
     ${m.notes ? `<div class="notes">${esc(m.notes)}</div>` : ''}
-    <div class="src">Medido por ${esc(m.author)} el ${m.date}.</div>
-  </div>`;
-  function fx(m) { return `${m.fx.type} ${fmtN(m.fx.rate)} (${m.fx.date}, ${m.fx.source.replace(/^https?:\/\//, '')})`; }
+    <div class="src">Medido por ${esc(m.author)} el ${m.date}.${a.measurements.length > 1 ? ` ${a.measurements.length} mediciones en total.` : ''}</div>`;
 }
 
-function transfersHTML(p, byId) {
-  if (!p.transfers?.length) return '';
-  return `<div class="transfers">Transferencias: ` + p.transfers.map(t => {
+function stateTags(a) {
+  const m = a.latest;
+  if (!m) return '<span class="tag">sin medir</span>';
+  return [
+    m.stale ? `<span class="tag stale">vencida</span>` : '',
+    m.estimated ? '<span class="tag est">tasas estimadas</span>' : '',
+    !m.stale && !m.estimated ? '<span class="tag ref">ok</span>' : '',
+  ].join('');
+}
+
+function transferRows(p, byId) {
+  return (p.transfers || []).map(t => {
     const dest = byId[t.to];
     const rate = t.to_points / t.from_points;
-    const via = dest?.reference_cents_per_point != null ? ` → vale ${cpp(rate * dest.reference_cents_per_point)} por ${p.unit} vía ${esc(dest.name)}` : '';
-    return `${fmtN(t.from_points)} ${p.unit}${t.from_points === 1 ? '' : 's'} = ${fmtN(t.to_points)} ${dest ? esc(dest.unit) + (t.to_points === 1 ? '' : 's') + ' ' + esc(dest.name) : esc(t.to)}${via} <span class="tag">${t.date}</span>`;
-  }).join(' · ') + `</div>`;
+    const via = dest?.reference_cents_per_point != null ? rate * dest.reference_cents_per_point : null;
+    const label = `${fmtN(t.from_points)} ${p.unit}${t.from_points === 1 ? '' : 's'} → ${fmtN(t.to_points)} ${dest ? esc(dest.unit) + (t.to_points === 1 ? '' : 's') + ' ' + esc(dest.name) : esc(t.to)}`;
+    return `<tr class="alt xfer">
+      <td class="name">→ ${dest ? esc(dest.name.replace(/ \(.*\)$/, "")) : esc(t.to)}</td>
+      <td class="label">${label}${via != null ? ` · ${rate} × valor de destino` : ''}</td>
+      <td class="num cpp">${via != null ? cpp(via) : '—'}</td>
+      <td class="num usd">${via != null ? per10k(via) : '—'}</td>
+      <td class="date">${t.date}</td>
+      <td class="conf">—</td>
+      <td><span class="tag">tasa de cambio</span></td>
+    </tr>`;
+  }).join('');
 }
 
 async function main() {
-  const res = await fetch('data/index.json');
-  const idx = await res.json();
+  const idx = await (await fetch('data/index.json')).json();
   const byId = Object.fromEntries(idx.programs.map(p => [p.id, p]));
   const progs = [...idx.programs].sort((a, b) => (b.reference_cents_per_point ?? -1) - (a.reference_cents_per_point ?? -1));
-  document.getElementById('meta').textContent = `${progs.length} programas · índice generado el ${idx.generated}`;
-  document.getElementById('list').innerHTML = progs.map(p => {
+  const nAlts = progs.reduce((n, p) => n + p.alternatives.filter(a => a.latest).length, 0);
+  document.getElementById('meta').innerHTML = `<span>${progs.length} programas · ${nAlts} canjes medidos</span><span>índice generado el ${idx.generated}</span>`;
+  let html = '';
+  for (const p of progs) {
     const ref = p.alternatives.find(a => a.id === p.reference_alternative);
-    const refM = ref?.latest;
-    return `<details class="prog">
-      <summary>
-        <span class="name">${esc(p.name)}</span>
-        <span class="value">${cpp(p.reference_cents_per_point)}<small>por ${esc(p.unit)}${refM?.stale ? ' · vencido' : ''}${refM?.estimated ? ' · estimado' : ''}</small></span>
-        <span class="ref">${ref ? esc(ref.label) : 'Sin medición de referencia'}</span>
-      </summary>
-      <div class="alts">
-        ${p.alternatives.map(a => altHTML(a, p.unit)).join('') || '<div class="empty">Sin alternativas medidas. Solo transferencias.</div>'}
-        ${transfersHTML(p, byId)}
-        ${p.expiry?.rule ? `<div class="transfers">Vencimiento: ${esc(p.expiry.rule)}</div>` : ''}
-      </div>
-    </details>`;
-  }).join('');
+    html += `<tr class="prog${ref ? ' alt' : ''}" ${ref ? `data-id="${esc(p.id)}:${esc(ref.id)}"` : ''}>
+      <td class="name">${esc(p.name)}</td>
+      <td class="label${ref ? '' : ' empty'}">${ref ? esc(ref.label) : 'sin medición de referencia'}</td>
+      <td class="num cpp">${cpp(p.reference_cents_per_point)}</td>
+      <td class="num usd">${per10k(p.reference_cents_per_point)}</td>
+      <td class="date">${ref?.latest?.date ?? ''}</td>
+      <td class="conf">${ref ? ref.confidence : ''}</td>
+      <td>${ref ? stateTags(ref) : ''}</td>
+    </tr>`;
+    if (ref?.latest) html += `<tr class="detail" hidden data-for="${esc(p.id)}:${esc(ref.id)}"><td colspan="7">${detailHTML(ref, p.unit)}</td></tr>`;
+    for (const a of p.alternatives) {
+      if (a === ref) continue;
+      const m = a.latest;
+      html += `<tr class="alt" data-id="${esc(p.id)}:${esc(a.id)}">
+        <td class="name">alternativa</td>
+        <td class="label">${esc(a.label)}</td>
+        <td class="num cpp">${m ? cpp(m.cents_per_point) : '—'}</td>
+        <td class="num usd">${m ? per10k(m.cents_per_point) : '—'}</td>
+        <td class="date">${m?.date ?? ''}</td>
+        <td class="conf">${m ? a.confidence : ''}</td>
+        <td>${stateTags(a)}</td>
+      </tr>`;
+      if (m) html += `<tr class="detail" hidden data-for="${esc(p.id)}:${esc(a.id)}"><td colspan="7">${detailHTML(a, p.unit)}</td></tr>`;
+    }
+    html += transferRows(p, byId);
+  }
+  const tb = document.getElementById('tb');
+  tb.innerHTML = html;
+  tb.addEventListener('click', e => {
+    const tr = e.target.closest('tr.alt[data-id]');
+    if (!tr) return;
+    const d = tb.querySelector(`tr.detail[data-for="${tr.dataset.id}"]`);
+    if (d) d.hidden = !d.hidden;
+  });
 }
-main().catch(e => { document.getElementById('list').innerHTML = `<p class="empty">No se pudo cargar data/index.json (${esc(e.message)}). Si abriste el archivo localmente, serví la carpeta con <code>python3 -m http.server</code>.</p>`; });
+main().catch(e => { document.getElementById('tb').innerHTML = `<tr><td colspan="7" class="empty">No se pudo cargar data/index.json (${esc(e.message)}). Si abriste el archivo localmente, serví la carpeta con <code>python3 -m http.server</code>.</td></tr>`; });
 </script>
 </body>
 </html>
