@@ -669,7 +669,7 @@
       "alternatives": [
         {
           "id": "eze-mia-turista-1-escala",
-          "label": "Vuelo EZE–MIA ida y vuelta, turista, vía Houston (United no vuela EZE–MIA directo)",
+          "label": "Vuelo EZE–MIA ida y vuelta, turista, vía Houston",
           "type": "vuelo",
           "reference": true,
           "latest": {
@@ -695,7 +695,7 @@
               "amount": 108.44,
               "currency": "USD",
               "source": "https://www.united.com/en/us/fsr/choose-flights",
-              "note": "Ida: 45.000 millas + USD 101,59 (Saver). Vuelta: 49.500 millas + USD 6,85 (Saver). Requiere sesión iniciada para ver precios en millas."
+              "note": "Requiere sesión iniciada para ver precios en millas."
             },
             "fx": {
               "pair": "USD/ARS",
@@ -704,7 +704,7 @@
               "source": "https://dolarapi.com/v1/dolares/bolsa",
               "date": "2026-10-13"
             },
-            "notes": "Valor bajo porque Miami no es ruta natural de United desde EZE. Para una referencia más favorable medir EZE–EWR o EZE–IAH."
+            "notes": "Ida: 45.000 millas + USD 101,59. Vuelta: 49.500 millas + USD 6,85."
           },
           "measurements": [
             {
@@ -730,7 +730,7 @@
                 "amount": 108.44,
                 "currency": "USD",
                 "source": "https://www.united.com/en/us/fsr/choose-flights",
-                "note": "Ida: 45.000 millas + USD 101,59 (Saver). Vuelta: 49.500 millas + USD 6,85 (Saver). Requiere sesión iniciada para ver precios en millas."
+                "note": "Requiere sesión iniciada para ver precios en millas."
               },
               "fx": {
                 "pair": "USD/ARS",
@@ -739,7 +739,7 @@
                 "source": "https://dolarapi.com/v1/dolares/bolsa",
                 "date": "2026-10-13"
               },
-              "notes": "Valor bajo porque Miami no es ruta natural de United desde EZE. Para una referencia más favorable medir EZE–EWR o EZE–IAH."
+              "notes": "Ida: 45.000 millas + USD 101,59. Vuelta: 49.500 millas + USD 6,85."
             }
           ],
           "confidence": 1

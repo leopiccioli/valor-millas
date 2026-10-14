@@ -7,23 +7,42 @@
   "alternatives": [
     {
       "id": "eze-mia-turista-1-escala",
-      "label": "Vuelo EZE–MIA ida y vuelta, turista, vía Houston (United no vuela EZE–MIA directo)",
+      "label": "Vuelo EZE–MIA ida y vuelta, turista, vía Houston",
       "type": "vuelo",
       "reference": true,
       "measurements": [
         {
           "date": "2026-10-14",
           "window": "2027-03-09 → 2027-03-16 (martes a martes, 1 adulto)",
-          "cash": { "amount": 1031, "currency": "USD", "source": "https://www.united.com/en/us/fsr/choose-flights", "note": "United Economy, ida y vuelta, 1 escala (IAH). Precio total con impuestos." },
+          "cash": {
+            "amount": 1031,
+            "currency": "USD",
+            "source": "https://www.united.com/en/us/fsr/choose-flights",
+            "note": "United Economy, ida y vuelta, 1 escala (IAH). Precio total con impuestos."
+          },
           "points": 94500,
-          "fees": { "amount": 108.44, "currency": "USD", "source": "https://www.united.com/en/us/fsr/choose-flights", "note": "Ida: 45.000 millas + USD 101,59 (Saver). Vuelta: 49.500 millas + USD 6,85 (Saver). Requiere sesión iniciada para ver precios en millas." },
-          "fx": { "pair": "USD/ARS", "rate": 1539.4, "type": "MEP", "source": "https://dolarapi.com/v1/dolares/bolsa", "date": "2026-10-13" },
+          "fees": {
+            "amount": 108.44,
+            "currency": "USD",
+            "source": "https://www.united.com/en/us/fsr/choose-flights",
+            "note": "Requiere sesión iniciada para ver precios en millas."
+          },
+          "fx": {
+            "pair": "USD/ARS",
+            "rate": 1539.4,
+            "type": "MEP",
+            "source": "https://dolarapi.com/v1/dolares/bolsa",
+            "date": "2026-10-13"
+          },
           "author": "leopiccioli",
-          "notes": "Valor bajo porque Miami no es ruta natural de United desde EZE. Para una referencia más favorable medir EZE–EWR o EZE–IAH."
+          "notes": "Ida: 45.000 millas + USD 101,59. Vuelta: 49.500 millas + USD 6,85."
         }
       ]
     }
   ],
   "transfers": [],
-  "expiry": { "rule": "Las millas no vencen.", "source": "https://www.united.com/mileageplus" }
+  "expiry": {
+    "rule": "Las millas no vencen.",
+    "source": "https://www.united.com/mileageplus"
+  }
 }
