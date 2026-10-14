@@ -1,0 +1,29 @@
+{
+  "id": "jumbo-mas",
+  "name": "Jumbo Más (Cencosud)",
+  "unit": "punto",
+  "market": "AR",
+  "website": "https://www.jumbomas.com.ar",
+  "alternatives": [
+    {
+      "id": "cupon-online",
+      "label": "Cupón de descuento para compras online en Jumbo/Disco",
+      "type": "cupon",
+      "reference": true,
+      "measurements": [
+        {
+          "date": "2026-10-14",
+          "window": null,
+          "cash": { "amount": 1666, "currency": "ARS", "source": "https://www.jumbomas.com.ar/pesos-web-2", "note": "Cupón válido 10 días, solo online, un cupón por compra." },
+          "points": 20000,
+          "fees": { "amount": 0, "currency": "ARS" },
+          "fx": { "pair": "USD/ARS", "rate": 1539.4, "type": "MEP", "source": "https://dolarapi.com/v1/dolares/bolsa", "date": "2026-10-13" },
+          "author": "leopiccioli",
+          "notes": "Mínimo de canje 20.000 puntos. Existen conversiones a Shell Box y Smiles (sin medir)."
+        }
+      ]
+    }
+  ],
+  "transfers": [],
+  "expiry": { "rule": "Los puntos vencen; el programa avisa por mail 'puntos por vencer'.", "source": "https://www.jumbomas.com.ar" }
+}

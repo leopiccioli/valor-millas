@@ -1,0 +1,47 @@
+{
+  "id": "aerolineas-plus",
+  "name": "Aerolíneas Plus (Aerolíneas Argentinas)",
+  "unit": "milla",
+  "market": "AR",
+  "website": "https://www.aerolineas.com.ar/aerolineas-plus",
+  "alternatives": [
+    {
+      "id": "aep-mdz-promocional",
+      "label": "Vuelo AEP–MDZ (Mendoza) ida y vuelta, clase Promocional",
+      "type": "vuelo",
+      "reference": true,
+      "measurements": [
+        {
+          "date": "2026-10-14",
+          "window": "2027-03-09 → 2027-03-16 (martes a martes, 1 adulto)",
+          "cash": { "amount": 105, "currency": "USD", "source": "https://www.google.com/travel/flights", "note": "Google Flights, Aerolíneas Argentinas directo, ida y vuelta. Google muestra USD con su propio tipo de cambio." },
+          "points": 8000,
+          "fees": { "amount": 52000, "currency": "ARS", "estimated": true, "source": "https://www.infoviajera.com/?p=175785", "note": "ESTIMADO. Tasas de un canje BUE–Bariloche ida y vuelta publicado en agosto 2026. Falta medir las tasas exactas para Mendoza (requiere sesión en aerolineas.com.ar)." },
+          "fx": { "pair": "USD/ARS", "rate": 1539.4, "type": "MEP", "source": "https://dolarapi.com/v1/dolares/bolsa", "date": "2026-10-13" },
+          "author": "leopiccioli",
+          "notes": "4.000 millas por tramo en clase Promocional según mail de Aerolíneas Plus del 13/10/2026 ('A partir de 4.000 millas'). Sin tasas el valor sería 1,31 ¢; con tasas estimadas, 0,89 ¢."
+        }
+      ]
+    },
+    {
+      "id": "aep-cor-promocional",
+      "label": "Vuelo AEP–COR (Córdoba) ida y vuelta, clase Promocional",
+      "type": "vuelo",
+      "reference": false,
+      "measurements": [
+        {
+          "date": "2026-10-14",
+          "window": "2027-03-09 → 2027-03-16 (martes a martes, 1 adulto)",
+          "cash": { "amount": 110112, "currency": "ARS", "source": "https://www.aerolineas.com.ar/flights-offers?adt=1&inf=0&chd=0&flexDates=false&cabinClass=Economy&flightType=ROUND_TRIP&leg=AEP-COR-20270309&leg=COR-AEP-20270316&awardBooking=false", "note": "Tarifa Base ARS 55.056 por tramo, directo, con 'súper promo 10% off' aplicada." },
+          "points": 6000,
+          "fees": { "amount": 52000, "currency": "ARS", "estimated": true, "source": "https://www.infoviajera.com/?p=175785", "note": "ESTIMADO (ver alternativa Mendoza)." },
+          "fx": { "pair": "USD/ARS", "rate": 1539.4, "type": "MEP", "source": "https://dolarapi.com/v1/dolares/bolsa", "date": "2026-10-13" },
+          "author": "leopiccioli",
+          "notes": "3.000 millas por tramo en clase Promocional, visible en aerolineas.com.ar con 'Búsqueda en millas' sin iniciar sesión."
+        }
+      ]
+    }
+  ],
+  "transfers": [],
+  "expiry": { "rule": "Las millas vencen según fecha informada en el estado mensual.", "source": "https://www.aerolineas.com.ar/aerolineas-plus" }
+}

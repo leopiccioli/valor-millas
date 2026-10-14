@@ -1,0 +1,29 @@
+{
+  "id": "aadvantage",
+  "name": "American Airlines AAdvantage",
+  "unit": "milla",
+  "market": "AR",
+  "website": "https://www.aa.com/aadvantage",
+  "alternatives": [
+    {
+      "id": "eze-mia-turista-directo",
+      "label": "Vuelo EZE–MIA ida y vuelta, turista, directo",
+      "type": "vuelo",
+      "reference": true,
+      "measurements": [
+        {
+          "date": "2026-10-14",
+          "window": "2027-03-09 → 2027-03-16 (martes a martes, 1 adulto)",
+          "cash": { "amount": 881, "currency": "USD", "source": "https://www.aa.com/booking/find-flights", "note": "Tarifa 'desde', cabina Principal, AA 900 directo. Puede ser Basic Economy; el canje es Main Cabin, así que el valor está levemente subestimado o sobreestimado según la tarifa real comparable." },
+          "points": 44000,
+          "fees": { "amount": 101.59, "currency": "USD", "source": "https://www.aa.com/booking/find-flights", "note": "Tasas al canjear, ida y vuelta." },
+          "fx": { "pair": "USD/ARS", "rate": 1539.4, "type": "MEP", "source": "https://dolarapi.com/v1/dolares/bolsa", "date": "2026-10-13" },
+          "author": "leopiccioli",
+          "notes": "Mismo precio de canje (44K + USD 101,59) en todos los directos del 9/3; vuelta 16/3 no agrega millas."
+        }
+      ]
+    }
+  ],
+  "transfers": [],
+  "expiry": { "rule": "24 meses sin actividad; cualquier acumulación o canje renueva.", "source": "https://www.aa.com/i18n/customer-service/faqs/aadvantage-faqs.jsp" }
+}

@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valor real de las millas</title>
+<meta name="description" content="Cuánto vale en dólares cada milla o punto, con el cálculo a la vista y la fuente de cada número. Argentina primero.">
+<style>
+  :root {
+    --bg: #faf8f3; --ink: #1b1a17; --muted: #6b675e; --line: #e3dfd5; --card: #ffffff;
+    --accent: #0b5fff; --warn: #b45309; --warn-bg: #fff4e0; --stale: #8a1c1c; --stale-bg: #fde8e8; --ok-bg: #e8f3ea;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141311; --ink: #ece8df; --muted: #a39d90; --line: #2b2925; --card: #1c1b18;
+      --accent: #6fa1ff; --warn: #f0b358; --warn-bg: #3a2a10; --stale: #ff9a9a; --stale-bg: #3d1a1a; --ok-bg: #1d2f22;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141311; --ink: #ece8df; --muted: #a39d90; --line: #2b2925; --card: #1c1b18;
+    --accent: #6fa1ff; --warn: #f0b358; --warn-bg: #3a2a10; --stale: #ff9a9a; --stale-bg: #3d1a1a; --ok-bg: #1d2f22;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 960px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: clamp(28px, 5vw, 40px); margin: 0 0 8px; letter-spacing: -0.02em; }
+  .lead { color: var(--muted); margin: 0 0 28px; max-width: 64ch; }
+  .lead a, a { color: var(--accent); }
+  .formula { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; margin: 0 0 28px; overflow-x: auto; }
+  .meta { color: var(--muted); font-size: 14px; margin-bottom: 16px; }
+  .prog { background: var(--card); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 14px; overflow: hidden; }
+  .prog > summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 1fr auto; gap: 8px 16px; align-items: baseline; padding: 16px 18px; }
+  .prog > summary::-webkit-details-marker { display: none; }
+  .prog > summary .name { font-weight: 600; font-size: 18px; grid-column: 1; grid-row: 1; }
+  .prog > summary .ref { color: var(--muted); font-size: 14px; grid-column: 1; grid-row: 2; }
+  .prog > summary .value { font-size: 28px; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; grid-column: 2; grid-row: 1 / span 2; align-self: center; text-align: right; }
+  .prog > summary .value small { display: block; font-size: 12px; font-weight: 400; color: var(--muted); }
+  .alts { border-top: 1px solid var(--line); padding: 4px 18px 14px; }
+  .alt { padding: 14px 0; border-bottom: 1px dashed var(--line); }
+  .alt:last-child { border-bottom: 0; }
+  .alt-head { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline; }
+  .alt-head .label { font-weight: 600; }
+  .alt-head .cpp { font-variant-numeric: tabular-nums; font-weight: 700; margin-left: auto; }
+  .tag { font-size: 12px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+  .tag.ref { background: var(--ok-bg); border-color: transparent; color: var(--ink); }
+  .tag.est { background: var(--warn-bg); color: var(--warn); border-color: transparent; }
+  .tag.stale { background: var(--stale-bg); color: var(--stale); border-color: transparent; }
+  .calc { margin: 10px 0 0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; color: var(--muted); white-space: pre-wrap; }
+  .calc b { color: var(--ink); font-weight: 600; }
+  .src { font-size: 13px; color: var(--muted); margin-top: 8px; }
+  .src a { word-break: break-all; }
+  .notes { font-size: 13px; margin-top: 6px; }
+  .transfers { font-size: 14px; color: var(--muted); padding: 10px 0 4px; }
+  .foot { margin-top: 36px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); padding-top: 16px; }
+  .cta { display: inline-block; margin-top: 8px; padding: 10px 14px; background: var(--accent); color: #fff; border-radius: 8px; text-decoration: none; font-weight: 600; }
+  .empty { color: var(--muted); font-size: 14px; padding: 10px 0; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Valor real de las millas</h1>
+  <p class="lead">Cuánto vale en dólares cada milla o punto, medido sobre el canje que la gente hace de verdad, con precio real de mercado, tasas restadas, y la fuente de cada número. Argentina primero. <a href="METODO.md">Método</a> · <a href="https://github.com/leopiccioli/valor-millas">Datos y código</a></p>
+  <div class="formula">valor por punto (USD) = (precio cash del canje − tasas que se pagan igual) ÷ puntos necesarios</div>
+  <div class="meta" id="meta"></div>
+  <div id="list"></div>
+  <div class="foot">
+    <p>¿Mediste un canje? Sumalo: no hace falta saber de GitHub, es un formulario.</p>
+    <a class="cta" href="https://github.com/leopiccioli/valor-millas/issues/new?template=medicion.yml">Proponer una medición</a>
+    <p>Las mediciones de más de 90 días se marcan como vencidas. "Confianza" es la cantidad de personas distintas que midieron esa alternativa recientemente. Pesos convertidos a dólar MEP.</p>
+  </div>
+</main>
+<script>
+const fmtUSD = n => n.toLocaleString('es-AR', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
+const fmtN = n => n.toLocaleString('es-AR');
+const cpp = c => c == null ? '—' : c.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 3 }) + ' ¢';
+const money = (m) => `${fmtN(m.amount)} ${m.currency}`;
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const link = s => /^https?:\/\//.test(s) ? `<a href="${esc(s)}" rel="noopener">${esc(s.replace(/^https?:\/\/(www\.)?/, '').slice(0, 70))}${s.length > 78 ? '…' : ''}</a>` : esc(s);
+
+function calcBlock(m) {
+  const fx = m.fx;
+  const ars = x => x.currency === 'ARS' ? ` (÷ ${fmtN(fx.rate)} MEP = ${fmtUSD(x.amount / fx.rate)})` : '';
+  return `cash   ${money(m.cash)}${ars(m.cash)}
+tasas  ${money(m.fees)}${ars(m.fees)}${m.fees.estimated ? '  ← estimado' : ''}
+neto   ${fmtUSD(m.net_usd)}
+puntos ${fmtN(m.points)}
+<b>${fmtUSD(m.net_usd)} ÷ ${fmtN(m.points)} = ${cpp(m.cents_per_point)} por ${m.unit}</b>`;
+}
+
+function altHTML(a, unit) {
+  const m = a.latest;
+  if (!m) return `<div class="alt"><div class="alt-head"><span class="label">${esc(a.label)}</span><span class="cpp">—</span></div><div class="empty">Sin mediciones todavía.</div></div>`;
+  m.unit = unit;
+  const tags = [
+    a.reference ? '<span class="tag ref">referencia</span>' : '',
+    m.estimated ? '<span class="tag est">tasas estimadas</span>' : '',
+    m.stale ? `<span class="tag stale">vencida · ${m.age_days} días</span>` : `<span class="tag">${m.date}</span>`,
+    `<span class="tag">confianza ${a.confidence}</span>`,
+  ].join('');
+  return `<div class="alt">
+    <div class="alt-head"><span class="label">${esc(a.label)}</span>${tags}<span class="cpp">${cpp(m.cents_per_point)}</span></div>
+    ${m.window ? `<div class="src">Fechas: ${esc(m.window)}</div>` : ''}
+    <pre class="calc">${calcBlock(m)}</pre>
+    <div class="src">Fuente cash: ${link(m.cash.source)}${m.cash.note ? ` — ${esc(m.cash.note)}` : ''}</div>
+    ${m.fees.source ? `<div class="src">Fuente tasas: ${link(m.fees.source)}${m.fees.note ? ` — ${esc(m.fees.note)}` : ''}</div>` : ''}
+    <div class="src">Dólar ${esc(fx(m))}</div>
+    ${m.notes ? `<div class="notes">${esc(m.notes)}</div>` : ''}
+    <div class="src">Medido por ${esc(m.author)} el ${m.date}.</div>
+  </div>`;
+  function fx(m) { return `${m.fx.type} ${fmtN(m.fx.rate)} (${m.fx.date}, ${m.fx.source.replace(/^https?:\/\//, '')})`; }
+}
+
+function transfersHTML(p, byId) {
+  if (!p.transfers?.length) return '';
+  return `<div class="transfers">Transferencias: ` + p.transfers.map(t => {
+    const dest = byId[t.to];
+    const rate = t.to_points / t.from_points;
+    const via = dest?.reference_cents_per_point != null ? ` → vale ${cpp(rate * dest.reference_cents_per_point)} por ${p.unit} vía ${esc(dest.name)}` : '';
+    return `${fmtN(t.from_points)} ${p.unit}${t.from_points === 1 ? '' : 's'} = ${fmtN(t.to_points)} ${dest ? esc(dest.unit) + (t.to_points === 1 ? '' : 's') + ' ' + esc(dest.name) : esc(t.to)}${via} <span class="tag">${t.date}</span>`;
+  }).join(' · ') + `</div>`;
+}
+
+async function main() {
+  const res = await fetch('data/index.json');
+  const idx = await res.json();
+  const byId = Object.fromEntries(idx.programs.map(p => [p.id, p]));
+  const progs = [...idx.programs].sort((a, b) => (b.reference_cents_per_point ?? -1) - (a.reference_cents_per_point ?? -1));
+  document.getElementById('meta').textContent = `${progs.length} programas · índice generado el ${idx.generated}`;
+  document.getElementById('list').innerHTML = progs.map(p => {
+    const ref = p.alternatives.find(a => a.id === p.reference_alternative);
+    const refM = ref?.latest;
+    return `<details class="prog">
+      <summary>
+        <span class="name">${esc(p.name)}</span>
+        <span class="value">${cpp(p.reference_cents_per_point)}<small>por ${esc(p.unit)}${refM?.stale ? ' · vencido' : ''}${refM?.estimated ? ' · estimado' : ''}</small></span>
+        <span class="ref">${ref ? esc(ref.label) : 'Sin medición de referencia'}</span>
+      </summary>
+      <div class="alts">
+        ${p.alternatives.map(a => altHTML(a, p.unit)).join('') || '<div class="empty">Sin alternativas medidas. Solo transferencias.</div>'}
+        ${transfersHTML(p, byId)}
+        ${p.expiry?.rule ? `<div class="transfers">Vencimiento: ${esc(p.expiry.rule)}</div>` : ''}
+      </div>
+    </details>`;
+  }).join('');
+}
+main().catch(e => { document.getElementById('list').innerHTML = `<p class="empty">No se pudo cargar data/index.json (${esc(e.message)}). Si abriste el archivo localmente, serví la carpeta con <code>python3 -m http.server</code>.</p>`; });
+</script>
+</body>
+</html>

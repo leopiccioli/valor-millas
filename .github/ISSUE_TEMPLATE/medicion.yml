@@ -1,0 +1,68 @@
+name: Proponer una medición
+description: Un canje real que mediste, con precio cash, puntos, tasas y fuente.
+title: "[medición] <programa>: <canje>"
+labels: ["medicion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias. Leé primero el [método](../blob/main/METODO.md): precio real de mercado (no de lista), canje de máxima rotación, tasas restadas.
+  - type: input
+    id: programa
+    attributes:
+      label: Programa
+      description: Nombre del programa y país (ej. "Aerolíneas Plus, Argentina"). Si ya existe en `data/`, usá su id.
+    validations:
+      required: true
+  - type: input
+    id: canje
+    attributes:
+      label: Canje medido
+      description: Qué canjeaste o cotizaste (ej. "AEP–MDZ ida y vuelta, Promocional" o "Crédito en tarjeta $30.000").
+    validations:
+      required: true
+  - type: input
+    id: cash
+    attributes:
+      label: Precio cash del mismo producto
+      description: Monto y moneda (ej. "105 USD" o "110.112 ARS") y dónde lo viste.
+    validations:
+      required: true
+  - type: input
+    id: puntos
+    attributes:
+      label: Puntos o millas necesarios
+      description: Total para el canje completo (ida y vuelta si aplica).
+    validations:
+      required: true
+  - type: input
+    id: tasas
+    attributes:
+      label: Tasas o cargos que igual se pagan al canjear
+      description: Monto y moneda. "0" si no hay. Aclará si es estimado.
+    validations:
+      required: true
+  - type: input
+    id: fecha
+    attributes:
+      label: Fecha de la medición
+      description: AAAA-MM-DD
+    validations:
+      required: true
+  - type: input
+    id: ventana
+    attributes:
+      label: Fechas del viaje (si es un vuelo)
+      description: Ej. "2027-03-09 → 2027-03-16"
+  - type: textarea
+    id: fuente
+    attributes:
+      label: Fuente
+      description: URL pública, o la ruta exacta dentro del sitio/app si está detrás de login. Podés pegar una captura (sin datos personales).
+    validations:
+      required: true
+  - type: textarea
+    id: notas
+    attributes:
+      label: Notas
+      description: Cualquier cosa que ayude a interpretar el número.

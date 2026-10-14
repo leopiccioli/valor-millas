@@ -1,0 +1,39 @@
+{
+  "id": "shell-box",
+  "name": "Shell Box",
+  "unit": "punto",
+  "market": "AR",
+  "website": "https://shellbox.shell.com.ar",
+  "alternatives": [
+    {
+      "id": "voucher-nafta",
+      "label": "Voucher de descuento en combustible (solo en la app)",
+      "type": "cupon",
+      "reference": true,
+      "measurements": [
+        {
+          "date": "2024-04-02",
+          "window": null,
+          "cash": { "amount": 800, "currency": "ARS", "source": "https://www.iprofesional.com/economia/402888-como-usar-app-shell-box-ahorrar-combustible-nafta", "note": "Dato de prensa de abril 2024. VENCIDO: hace falta una medición actual desde la app Shell Box." },
+          "points": 550,
+          "fees": { "amount": 0, "currency": "ARS" },
+          "fx": { "pair": "USD/ARS", "rate": 870, "type": "MEP", "source": "https://dolarapi.com/v1/dolares/bolsa", "date": "2024-04-02", "note": "MEP aproximado a esa fecha." },
+          "author": "leopiccioli",
+          "notes": "El sitio web no muestra el conversor de vouchers; solo la app. Market Shell (productos por puntos) no se usa como referencia porque sus precios son de lista."
+        }
+      ]
+    }
+  ],
+  "transfers": [
+    {
+      "to": "latam-pass",
+      "from_points": 6,
+      "to_points": 1,
+      "date": "2026-10-14",
+      "source": "https://shellbox.shell.com.ar/conversor",
+      "author": "leopiccioli",
+      "notes": "El conversor muestra '1 milla = 6 puntos' para millas→puntos. La tasa puntos→millas no está publicada en texto; verificar."
+    }
+  ],
+  "expiry": { "rule": "Consultar en el programa.", "source": "https://shellbox.shell.com.ar" }
+}

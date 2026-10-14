@@ -1,0 +1,57 @@
+{
+  "id": "santander-superclub",
+  "name": "Santander SuperClub+",
+  "unit": "punto",
+  "market": "AR",
+  "website": "https://www.santander.com.ar/superclub",
+  "alternatives": [
+    {
+      "id": "credito-tarjeta-30000",
+      "label": "Crédito en resumen de tarjeta: $30.000",
+      "type": "credito",
+      "reference": true,
+      "measurements": [
+        {
+          "date": "2026-10-14",
+          "window": null,
+          "cash": { "amount": 30000, "currency": "ARS", "source": "Online Banking Santander → SuperClub+ → Vouchers → Crédito en tarjeta", "note": "Importe máximo del selector." },
+          "points": 9200,
+          "fees": { "amount": 0, "currency": "ARS" },
+          "fx": { "pair": "USD/ARS", "rate": 1539.4, "type": "MEP", "source": "https://dolarapi.com/v1/dolares/bolsa", "date": "2026-10-13" },
+          "author": "leopiccioli",
+          "notes": "La escala no es lineal: el crédito de $30.000 rinde 3,26 $/punto; el de $3.000 rinde 2,14 $/punto."
+        }
+      ]
+    },
+    {
+      "id": "credito-tarjeta-3000",
+      "label": "Crédito en resumen de tarjeta: $3.000",
+      "type": "credito",
+      "reference": false,
+      "measurements": [
+        {
+          "date": "2026-10-14",
+          "window": null,
+          "cash": { "amount": 3000, "currency": "ARS", "source": "Online Banking Santander → SuperClub+ → Vouchers → Crédito en tarjeta", "note": "Importe mínimo del selector." },
+          "points": 1400,
+          "fees": { "amount": 0, "currency": "ARS" },
+          "fx": { "pair": "USD/ARS", "rate": 1539.4, "type": "MEP", "source": "https://dolarapi.com/v1/dolares/bolsa", "date": "2026-10-13" },
+          "author": "leopiccioli",
+          "notes": ""
+        }
+      ]
+    }
+  ],
+  "transfers": [
+    {
+      "to": "aerolineas-plus",
+      "from_points": 10000,
+      "to_points": 4500,
+      "date": "2026-10-14",
+      "source": "Online Banking Santander → SuperClub+ → Millas → Aerolíneas Plus",
+      "author": "leopiccioli",
+      "notes": "10.000 puntos SuperClub+ = 4.500 millas Aerolíneas Plus (0,45). También ofrece LATAM Pass y Smiles (sin medir)."
+    }
+  ],
+  "expiry": { "rule": "Consultar en el programa.", "source": "https://www.santander.com.ar/superclub" }
+}

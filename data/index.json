@@ -1,0 +1,753 @@
+{
+  "generated": "2026-10-14",
+  "stale_days": 90,
+  "programs": [
+    {
+      "id": "aadvantage",
+      "name": "American Airlines AAdvantage",
+      "unit": "milla",
+      "market": "AR",
+      "website": "https://www.aa.com/aadvantage",
+      "expiry": {
+        "rule": "24 meses sin actividad; cualquier acumulación o canje renueva.",
+        "source": "https://www.aa.com/i18n/customer-service/faqs/aadvantage-faqs.jsp"
+      },
+      "alternatives": [
+        {
+          "id": "eze-mia-turista-directo",
+          "label": "Vuelo EZE–MIA ida y vuelta, turista, directo",
+          "type": "vuelo",
+          "reference": true,
+          "latest": {
+            "date": "2026-10-14",
+            "window": "2027-03-09 → 2027-03-16 (martes a martes, 1 adulto)",
+            "cash_usd": 881,
+            "fees_usd": 101.59,
+            "net_usd": 779.41,
+            "points": 44000,
+            "usd_per_point": 0.017713863636363635,
+            "cents_per_point": 1.771,
+            "estimated": false,
+            "stale": false,
+            "age_days": 0,
+            "author": "leopiccioli",
+            "cash": {
+              "amount": 881,
+              "currency": "USD",
+              "source": "https://www.aa.com/booking/find-flights",
+              "note": "Tarifa 'desde', cabina Principal, AA 900 directo. Puede ser Basic Economy; el canje es Main Cabin, así que el valor está levemente subestimado o sobreestimado según la tarifa real comparable."
+            },
+            "fees": {
+              "amount": 101.59,
+              "currency": "USD",
+              "source": "https://www.aa.com/booking/find-flights",
+              "note": "Tasas al canjear, ida y vuelta."
+            },
+            "fx": {
+              "pair": "USD/ARS",
+              "rate": 1539.4,
+              "type": "MEP",
+              "source": "https://dolarapi.com/v1/dolares/bolsa",
+              "date": "2026-10-13"
+            },
+            "notes": "Mismo precio de canje (44K + USD 101,59) en todos los directos del 9/3; vuelta 16/3 no agrega millas."
+          },
+          "measurements": [
+            {
+              "date": "2026-10-14",
+              "window": "2027-03-09 → 2027-03-16 (martes a martes, 1 adulto)",
+              "cash_usd": 881,
+              "fees_usd": 101.59,
+              "net_usd": 779.41,
+              "points": 44000,
+              "usd_per_point": 0.017713863636363635,
+              "cents_per_point": 1.771,
+              "estimated": false,
+              "stale": false,
+              "age_days": 0,
+              "author": "leopiccioli",
+              "cash": {
+                "amount": 881,
+                "currency": "USD",
+                "source": "https://www.aa.com/booking/find-flights",
+                "note": "Tarifa 'desde', cabina Principal, AA 900 directo. Puede ser Basic Economy; el canje es Main Cabin, así que el valor está levemente subestimado o sobreestimado según la tarifa real comparable."
+              },
+              "fees": {
+                "amount": 101.59,
+                "currency": "USD",
+                "source": "https://www.aa.com/booking/find-flights",
+                "note": "Tasas al canjear, ida y vuelta."
+              },
+              "fx": {
+                "pair": "USD/ARS",
+                "rate": 1539.4,
+                "type": "MEP",
+                "source": "https://dolarapi.com/v1/dolares/bolsa",
+                "date": "2026-10-13"
+              },
+              "notes": "Mismo precio de canje (44K + USD 101,59) en todos los directos del 9/3; vuelta 16/3 no agrega millas."
+            }
+          ],
+          "confidence": 1
+        }
+      ],
+      "transfers": [],
+      "reference_alternative": "eze-mia-turista-directo",
+      "reference_cents_per_point": 1.771
+    },
+    {
+      "id": "aerolineas-plus",
+      "name": "Aerolíneas Plus (Aerolíneas Argentinas)",
+      "unit": "milla",
+      "market": "AR",
+      "website": "https://www.aerolineas.com.ar/aerolineas-plus",
+      "expiry": {
+        "rule": "Las millas vencen según fecha informada en el estado mensual.",
+        "source": "https://www.aerolineas.com.ar/aerolineas-plus"
+      },
+      "alternatives": [
+        {
+          "id": "aep-mdz-promocional",
+          "label": "Vuelo AEP–MDZ (Mendoza) ida y vuelta, clase Promocional",
+          "type": "vuelo",
+          "reference": true,
+          "latest": {
+            "date": "2026-10-14",
+            "window": "2027-03-09 → 2027-03-16 (martes a martes, 1 adulto)",
+            "cash_usd": 105,
+            "fees_usd": 33.78,
+            "net_usd": 71.22,
+            "points": 8000,
+            "usd_per_point": 0.00890257567883591,
+            "cents_per_point": 0.89,
+            "estimated": true,
+            "stale": false,
+            "age_days": 0,
+            "author": "leopiccioli",
+            "cash": {
+              "amount": 105,
+              "currency": "USD",
+              "source": "https://www.google.com/travel/flights",
+              "note": "Google Flights, Aerolíneas Argentinas directo, ida y vuelta. Google muestra USD con su propio tipo de cambio."
+            },
+            "fees": {
+              "amount": 52000,
+              "currency": "ARS",
+              "estimated": true,
+              "source": "https://www.infoviajera.com/?p=175785",
+              "note": "ESTIMADO. Tasas de un canje BUE–Bariloche ida y vuelta publicado en agosto 2026. Falta medir las tasas exactas para Mendoza (requiere sesión en aerolineas.com.ar)."
+            },
+            "fx": {
+              "pair": "USD/ARS",
+              "rate": 1539.4,
+              "type": "MEP",
+              "source": "https://dolarapi.com/v1/dolares/bolsa",
+              "date": "2026-10-13"
+            },
+            "notes": "4.000 millas por tramo en clase Promocional según mail de Aerolíneas Plus del 13/10/2026 ('A partir de 4.000 millas'). Sin tasas el valor sería 1,31 ¢; con tasas estimadas, 0,89 ¢."
+          },
+          "measurements": [
+            {
+              "date": "2026-10-14",
+              "window": "2027-03-09 → 2027-03-16 (martes a martes, 1 adulto)",
+              "cash_usd": 105,
+              "fees_usd": 33.78,
+              "net_usd": 71.22,
+              "points": 8000,
+              "usd_per_point": 0.00890257567883591,
+              "cents_per_point": 0.89,
+              "estimated": true,
+              "stale": false,
+              "age_days": 0,
+              "author": "leopiccioli",
+              "cash": {
+                "amount": 105,
+                "currency": "USD",
+                "source": "https://www.google.com/travel/flights",
+                "note": "Google Flights, Aerolíneas Argentinas directo, ida y vuelta. Google muestra USD con su propio tipo de cambio."
+              },
+              "fees": {
+                "amount": 52000,
+                "currency": "ARS",
+                "estimated": true,
+                "source": "https://www.infoviajera.com/?p=175785",
+                "note": "ESTIMADO. Tasas de un canje BUE–Bariloche ida y vuelta publicado en agosto 2026. Falta medir las tasas exactas para Mendoza (requiere sesión en aerolineas.com.ar)."
+              },
+              "fx": {
+                "pair": "USD/ARS",
+                "rate": 1539.4,
+                "type": "MEP",
+                "source": "https://dolarapi.com/v1/dolares/bolsa",
+                "date": "2026-10-13"
+              },
+              "notes": "4.000 millas por tramo en clase Promocional según mail de Aerolíneas Plus del 13/10/2026 ('A partir de 4.000 millas'). Sin tasas el valor sería 1,31 ¢; con tasas estimadas, 0,89 ¢."
+            }
+          ],
+          "confidence": 1
+        },
+        {
+          "id": "aep-cor-promocional",
+          "label": "Vuelo AEP–COR (Córdoba) ida y vuelta, clase Promocional",
+          "type": "vuelo",
+          "reference": false,
+          "latest": {
+            "date": "2026-10-14",
+            "window": "2027-03-09 → 2027-03-16 (martes a martes, 1 adulto)",
+            "cash_usd": 71.53,
+            "fees_usd": 33.78,
+            "net_usd": 37.75,
+            "points": 6000,
+            "usd_per_point": 0.006291628773115067,
+            "cents_per_point": 0.629,
+            "estimated": true,
+            "stale": false,
+            "age_days": 0,
+            "author": "leopiccioli",
+            "cash": {
+              "amount": 110112,
+              "currency": "ARS",
+              "source": "https://www.aerolineas.com.ar/flights-offers?adt=1&inf=0&chd=0&flexDates=false&cabinClass=Economy&flightType=ROUND_TRIP&leg=AEP-COR-20270309&leg=COR-AEP-20270316&awardBooking=false",
+              "note": "Tarifa Base ARS 55.056 por tramo, directo, con 'súper promo 10% off' aplicada."
+            },
+            "fees": {
+              "amount": 52000,
+              "currency": "ARS",
+              "estimated": true,
+              "source": "https://www.infoviajera.com/?p=175785",
+              "note": "ESTIMADO (ver alternativa Mendoza)."
+            },
+            "fx": {
+              "pair": "USD/ARS",
+              "rate": 1539.4,
+              "type": "MEP",
+              "source": "https://dolarapi.com/v1/dolares/bolsa",
+              "date": "2026-10-13"
+            },
+            "notes": "3.000 millas por tramo en clase Promocional, visible en aerolineas.com.ar con 'Búsqueda en millas' sin iniciar sesión."
+          },
+          "measurements": [
+            {
+              "date": "2026-10-14",
+              "window": "2027-03-09 → 2027-03-16 (martes a martes, 1 adulto)",
+              "cash_usd": 71.53,
+              "fees_usd": 33.78,
+              "net_usd": 37.75,
+              "points": 6000,
+              "usd_per_point": 0.006291628773115067,
+              "cents_per_point": 0.629,
+              "estimated": true,
+              "stale": false,
+              "age_days": 0,
+              "author": "leopiccioli",
+              "cash": {
+                "amount": 110112,
+                "currency": "ARS",
+                "source": "https://www.aerolineas.com.ar/flights-offers?adt=1&inf=0&chd=0&flexDates=false&cabinClass=Economy&flightType=ROUND_TRIP&leg=AEP-COR-20270309&leg=COR-AEP-20270316&awardBooking=false",
+                "note": "Tarifa Base ARS 55.056 por tramo, directo, con 'súper promo 10% off' aplicada."
+              },
+              "fees": {
+                "amount": 52000,
+                "currency": "ARS",
+                "estimated": true,
+                "source": "https://www.infoviajera.com/?p=175785",
+                "note": "ESTIMADO (ver alternativa Mendoza)."
+              },
+              "fx": {
+                "pair": "USD/ARS",
+                "rate": 1539.4,
+                "type": "MEP",
+                "source": "https://dolarapi.com/v1/dolares/bolsa",
+                "date": "2026-10-13"
+              },
+              "notes": "3.000 millas por tramo en clase Promocional, visible en aerolineas.com.ar con 'Búsqueda en millas' sin iniciar sesión."
+            }
+          ],
+          "confidence": 1
+        }
+      ],
+      "transfers": [],
+      "reference_alternative": "aep-mdz-promocional",
+      "reference_cents_per_point": 0.89
+    },
+    {
+      "id": "jumbo-mas",
+      "name": "Jumbo Más (Cencosud)",
+      "unit": "punto",
+      "market": "AR",
+      "website": "https://www.jumbomas.com.ar",
+      "expiry": {
+        "rule": "Los puntos vencen; el programa avisa por mail 'puntos por vencer'.",
+        "source": "https://www.jumbomas.com.ar"
+      },
+      "alternatives": [
+        {
+          "id": "cupon-online",
+          "label": "Cupón de descuento para compras online en Jumbo/Disco",
+          "type": "cupon",
+          "reference": true,
+          "latest": {
+            "date": "2026-10-14",
+            "window": null,
+            "cash_usd": 1.08,
+            "fees_usd": 0.0,
+            "net_usd": 1.08,
+            "points": 20000,
+            "usd_per_point": 5.4111991685072104e-05,
+            "cents_per_point": 0.005,
+            "estimated": false,
+            "stale": false,
+            "age_days": 0,
+            "author": "leopiccioli",
+            "cash": {
+              "amount": 1666,
+              "currency": "ARS",
+              "source": "https://www.jumbomas.com.ar/pesos-web-2",
+              "note": "Cupón válido 10 días, solo online, un cupón por compra."
+            },
+            "fees": {
+              "amount": 0,
+              "currency": "ARS"
+            },
+            "fx": {
+              "pair": "USD/ARS",
+              "rate": 1539.4,
+              "type": "MEP",
+              "source": "https://dolarapi.com/v1/dolares/bolsa",
+              "date": "2026-10-13"
+            },
+            "notes": "Mínimo de canje 20.000 puntos. Existen conversiones a Shell Box y Smiles (sin medir)."
+          },
+          "measurements": [
+            {
+              "date": "2026-10-14",
+              "window": null,
+              "cash_usd": 1.08,
+              "fees_usd": 0.0,
+              "net_usd": 1.08,
+              "points": 20000,
+              "usd_per_point": 5.4111991685072104e-05,
+              "cents_per_point": 0.005,
+              "estimated": false,
+              "stale": false,
+              "age_days": 0,
+              "author": "leopiccioli",
+              "cash": {
+                "amount": 1666,
+                "currency": "ARS",
+                "source": "https://www.jumbomas.com.ar/pesos-web-2",
+                "note": "Cupón válido 10 días, solo online, un cupón por compra."
+              },
+              "fees": {
+                "amount": 0,
+                "currency": "ARS"
+              },
+              "fx": {
+                "pair": "USD/ARS",
+                "rate": 1539.4,
+                "type": "MEP",
+                "source": "https://dolarapi.com/v1/dolares/bolsa",
+                "date": "2026-10-13"
+              },
+              "notes": "Mínimo de canje 20.000 puntos. Existen conversiones a Shell Box y Smiles (sin medir)."
+            }
+          ],
+          "confidence": 1
+        }
+      ],
+      "transfers": [],
+      "reference_alternative": "cupon-online",
+      "reference_cents_per_point": 0.005
+    },
+    {
+      "id": "latam-pass",
+      "name": "LATAM Pass",
+      "unit": "milla",
+      "market": "AR",
+      "website": "https://www.latamairlines.com/ar/es/latam-pass",
+      "expiry": {
+        "rule": "Consultar en el programa.",
+        "source": "https://www.latamairlines.com/ar/es/latam-pass"
+      },
+      "alternatives": [],
+      "transfers": [
+        {
+          "to": "shell-box",
+          "from_points": 1,
+          "to_points": 6,
+          "date": "2026-10-14",
+          "source": "https://shellbox.shell.com.ar/conversor",
+          "author": "leopiccioli",
+          "notes": "1 milla LATAM Pass = 6 puntos Shell Box."
+        }
+      ],
+      "reference_alternative": null,
+      "reference_cents_per_point": null
+    },
+    {
+      "id": "santander-superclub",
+      "name": "Santander SuperClub+",
+      "unit": "punto",
+      "market": "AR",
+      "website": "https://www.santander.com.ar/superclub",
+      "expiry": {
+        "rule": "Consultar en el programa.",
+        "source": "https://www.santander.com.ar/superclub"
+      },
+      "alternatives": [
+        {
+          "id": "credito-tarjeta-30000",
+          "label": "Crédito en resumen de tarjeta: $30.000",
+          "type": "credito",
+          "reference": true,
+          "latest": {
+            "date": "2026-10-14",
+            "window": null,
+            "cash_usd": 19.49,
+            "fees_usd": 0.0,
+            "net_usd": 19.49,
+            "points": 9200,
+            "usd_per_point": 0.002118273070818105,
+            "cents_per_point": 0.212,
+            "estimated": false,
+            "stale": false,
+            "age_days": 0,
+            "author": "leopiccioli",
+            "cash": {
+              "amount": 30000,
+              "currency": "ARS",
+              "source": "Online Banking Santander → SuperClub+ → Vouchers → Crédito en tarjeta",
+              "note": "Importe máximo del selector."
+            },
+            "fees": {
+              "amount": 0,
+              "currency": "ARS"
+            },
+            "fx": {
+              "pair": "USD/ARS",
+              "rate": 1539.4,
+              "type": "MEP",
+              "source": "https://dolarapi.com/v1/dolares/bolsa",
+              "date": "2026-10-13"
+            },
+            "notes": "La escala no es lineal: el crédito de $30.000 rinde 3,26 $/punto; el de $3.000 rinde 2,14 $/punto."
+          },
+          "measurements": [
+            {
+              "date": "2026-10-14",
+              "window": null,
+              "cash_usd": 19.49,
+              "fees_usd": 0.0,
+              "net_usd": 19.49,
+              "points": 9200,
+              "usd_per_point": 0.002118273070818105,
+              "cents_per_point": 0.212,
+              "estimated": false,
+              "stale": false,
+              "age_days": 0,
+              "author": "leopiccioli",
+              "cash": {
+                "amount": 30000,
+                "currency": "ARS",
+                "source": "Online Banking Santander → SuperClub+ → Vouchers → Crédito en tarjeta",
+                "note": "Importe máximo del selector."
+              },
+              "fees": {
+                "amount": 0,
+                "currency": "ARS"
+              },
+              "fx": {
+                "pair": "USD/ARS",
+                "rate": 1539.4,
+                "type": "MEP",
+                "source": "https://dolarapi.com/v1/dolares/bolsa",
+                "date": "2026-10-13"
+              },
+              "notes": "La escala no es lineal: el crédito de $30.000 rinde 3,26 $/punto; el de $3.000 rinde 2,14 $/punto."
+            }
+          ],
+          "confidence": 1
+        },
+        {
+          "id": "credito-tarjeta-3000",
+          "label": "Crédito en resumen de tarjeta: $3.000",
+          "type": "credito",
+          "reference": false,
+          "latest": {
+            "date": "2026-10-14",
+            "window": null,
+            "cash_usd": 1.95,
+            "fees_usd": 0.0,
+            "net_usd": 1.95,
+            "points": 1400,
+            "usd_per_point": 0.0013920080179661834,
+            "cents_per_point": 0.139,
+            "estimated": false,
+            "stale": false,
+            "age_days": 0,
+            "author": "leopiccioli",
+            "cash": {
+              "amount": 3000,
+              "currency": "ARS",
+              "source": "Online Banking Santander → SuperClub+ → Vouchers → Crédito en tarjeta",
+              "note": "Importe mínimo del selector."
+            },
+            "fees": {
+              "amount": 0,
+              "currency": "ARS"
+            },
+            "fx": {
+              "pair": "USD/ARS",
+              "rate": 1539.4,
+              "type": "MEP",
+              "source": "https://dolarapi.com/v1/dolares/bolsa",
+              "date": "2026-10-13"
+            },
+            "notes": ""
+          },
+          "measurements": [
+            {
+              "date": "2026-10-14",
+              "window": null,
+              "cash_usd": 1.95,
+              "fees_usd": 0.0,
+              "net_usd": 1.95,
+              "points": 1400,
+              "usd_per_point": 0.0013920080179661834,
+              "cents_per_point": 0.139,
+              "estimated": false,
+              "stale": false,
+              "age_days": 0,
+              "author": "leopiccioli",
+              "cash": {
+                "amount": 3000,
+                "currency": "ARS",
+                "source": "Online Banking Santander → SuperClub+ → Vouchers → Crédito en tarjeta",
+                "note": "Importe mínimo del selector."
+              },
+              "fees": {
+                "amount": 0,
+                "currency": "ARS"
+              },
+              "fx": {
+                "pair": "USD/ARS",
+                "rate": 1539.4,
+                "type": "MEP",
+                "source": "https://dolarapi.com/v1/dolares/bolsa",
+                "date": "2026-10-13"
+              },
+              "notes": ""
+            }
+          ],
+          "confidence": 1
+        }
+      ],
+      "transfers": [
+        {
+          "to": "aerolineas-plus",
+          "from_points": 10000,
+          "to_points": 4500,
+          "date": "2026-10-14",
+          "source": "Online Banking Santander → SuperClub+ → Millas → Aerolíneas Plus",
+          "author": "leopiccioli",
+          "notes": "10.000 puntos SuperClub+ = 4.500 millas Aerolíneas Plus (0,45). También ofrece LATAM Pass y Smiles (sin medir)."
+        }
+      ],
+      "reference_alternative": "credito-tarjeta-30000",
+      "reference_cents_per_point": 0.212
+    },
+    {
+      "id": "shell-box",
+      "name": "Shell Box",
+      "unit": "punto",
+      "market": "AR",
+      "website": "https://shellbox.shell.com.ar",
+      "expiry": {
+        "rule": "Consultar en el programa.",
+        "source": "https://shellbox.shell.com.ar"
+      },
+      "alternatives": [
+        {
+          "id": "voucher-nafta",
+          "label": "Voucher de descuento en combustible (solo en la app)",
+          "type": "cupon",
+          "reference": true,
+          "latest": {
+            "date": "2024-04-02",
+            "window": null,
+            "cash_usd": 0.92,
+            "fees_usd": 0.0,
+            "net_usd": 0.92,
+            "points": 550,
+            "usd_per_point": 0.001671891327063741,
+            "cents_per_point": 0.167,
+            "estimated": false,
+            "stale": true,
+            "age_days": 925,
+            "author": "leopiccioli",
+            "cash": {
+              "amount": 800,
+              "currency": "ARS",
+              "source": "https://www.iprofesional.com/economia/402888-como-usar-app-shell-box-ahorrar-combustible-nafta",
+              "note": "Dato de prensa de abril 2024. VENCIDO: hace falta una medición actual desde la app Shell Box."
+            },
+            "fees": {
+              "amount": 0,
+              "currency": "ARS"
+            },
+            "fx": {
+              "pair": "USD/ARS",
+              "rate": 870,
+              "type": "MEP",
+              "source": "https://dolarapi.com/v1/dolares/bolsa",
+              "date": "2024-04-02",
+              "note": "MEP aproximado a esa fecha."
+            },
+            "notes": "El sitio web no muestra el conversor de vouchers; solo la app. Market Shell (productos por puntos) no se usa como referencia porque sus precios son de lista."
+          },
+          "measurements": [
+            {
+              "date": "2024-04-02",
+              "window": null,
+              "cash_usd": 0.92,
+              "fees_usd": 0.0,
+              "net_usd": 0.92,
+              "points": 550,
+              "usd_per_point": 0.001671891327063741,
+              "cents_per_point": 0.167,
+              "estimated": false,
+              "stale": true,
+              "age_days": 925,
+              "author": "leopiccioli",
+              "cash": {
+                "amount": 800,
+                "currency": "ARS",
+                "source": "https://www.iprofesional.com/economia/402888-como-usar-app-shell-box-ahorrar-combustible-nafta",
+                "note": "Dato de prensa de abril 2024. VENCIDO: hace falta una medición actual desde la app Shell Box."
+              },
+              "fees": {
+                "amount": 0,
+                "currency": "ARS"
+              },
+              "fx": {
+                "pair": "USD/ARS",
+                "rate": 870,
+                "type": "MEP",
+                "source": "https://dolarapi.com/v1/dolares/bolsa",
+                "date": "2024-04-02",
+                "note": "MEP aproximado a esa fecha."
+              },
+              "notes": "El sitio web no muestra el conversor de vouchers; solo la app. Market Shell (productos por puntos) no se usa como referencia porque sus precios son de lista."
+            }
+          ],
+          "confidence": 0
+        }
+      ],
+      "transfers": [
+        {
+          "to": "latam-pass",
+          "from_points": 6,
+          "to_points": 1,
+          "date": "2026-10-14",
+          "source": "https://shellbox.shell.com.ar/conversor",
+          "author": "leopiccioli",
+          "notes": "El conversor muestra '1 milla = 6 puntos' para millas→puntos. La tasa puntos→millas no está publicada en texto; verificar."
+        }
+      ],
+      "reference_alternative": "voucher-nafta",
+      "reference_cents_per_point": 0.167
+    },
+    {
+      "id": "united-mileageplus",
+      "name": "United MileagePlus",
+      "unit": "milla",
+      "market": "AR",
+      "website": "https://www.united.com/mileageplus",
+      "expiry": {
+        "rule": "Las millas no vencen.",
+        "source": "https://www.united.com/mileageplus"
+      },
+      "alternatives": [
+        {
+          "id": "eze-mia-turista-1-escala",
+          "label": "Vuelo EZE–MIA ida y vuelta, turista, vía Houston (United no vuela EZE–MIA directo)",
+          "type": "vuelo",
+          "reference": true,
+          "latest": {
+            "date": "2026-10-14",
+            "window": "2027-03-09 → 2027-03-16 (martes a martes, 1 adulto)",
+            "cash_usd": 1031,
+            "fees_usd": 108.44,
+            "net_usd": 922.56,
+            "points": 94500,
+            "usd_per_point": 0.009762539682539682,
+            "cents_per_point": 0.976,
+            "estimated": false,
+            "stale": false,
+            "age_days": 0,
+            "author": "leopiccioli",
+            "cash": {
+              "amount": 1031,
+              "currency": "USD",
+              "source": "https://www.united.com/en/us/fsr/choose-flights",
+              "note": "United Economy, ida y vuelta, 1 escala (IAH). Precio total con impuestos."
+            },
+            "fees": {
+              "amount": 108.44,
+              "currency": "USD",
+              "source": "https://www.united.com/en/us/fsr/choose-flights",
+              "note": "Ida: 45.000 millas + USD 101,59 (Saver). Vuelta: 49.500 millas + USD 6,85 (Saver). Requiere sesión iniciada para ver precios en millas."
+            },
+            "fx": {
+              "pair": "USD/ARS",
+              "rate": 1539.4,
+              "type": "MEP",
+              "source": "https://dolarapi.com/v1/dolares/bolsa",
+              "date": "2026-10-13"
+            },
+            "notes": "Valor bajo porque Miami no es ruta natural de United desde EZE. Para una referencia más favorable medir EZE–EWR o EZE–IAH."
+          },
+          "measurements": [
+            {
+              "date": "2026-10-14",
+              "window": "2027-03-09 → 2027-03-16 (martes a martes, 1 adulto)",
+              "cash_usd": 1031,
+              "fees_usd": 108.44,
+              "net_usd": 922.56,
+              "points": 94500,
+              "usd_per_point": 0.009762539682539682,
+              "cents_per_point": 0.976,
+              "estimated": false,
+              "stale": false,
+              "age_days": 0,
+              "author": "leopiccioli",
+              "cash": {
+                "amount": 1031,
+                "currency": "USD",
+                "source": "https://www.united.com/en/us/fsr/choose-flights",
+                "note": "United Economy, ida y vuelta, 1 escala (IAH). Precio total con impuestos."
+              },
+              "fees": {
+                "amount": 108.44,
+                "currency": "USD",
+                "source": "https://www.united.com/en/us/fsr/choose-flights",
+                "note": "Ida: 45.000 millas + USD 101,59 (Saver). Vuelta: 49.500 millas + USD 6,85 (Saver). Requiere sesión iniciada para ver precios en millas."
+              },
+              "fx": {
+                "pair": "USD/ARS",
+                "rate": 1539.4,
+                "type": "MEP",
+                "source": "https://dolarapi.com/v1/dolares/bolsa",
+                "date": "2026-10-13"
+              },
+              "notes": "Valor bajo porque Miami no es ruta natural de United desde EZE. Para una referencia más favorable medir EZE–EWR o EZE–IAH."
+            }
+          ],
+          "confidence": 1
+        }
+      ],
+      "transfers": [],
+      "reference_alternative": "eze-mia-turista-1-escala",
+      "reference_cents_per_point": 0.976
+    }
+  ]
+}

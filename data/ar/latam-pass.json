@@ -1,0 +1,20 @@
+{
+  "id": "latam-pass",
+  "name": "LATAM Pass",
+  "unit": "milla",
+  "market": "AR",
+  "website": "https://www.latamairlines.com/ar/es/latam-pass",
+  "alternatives": [],
+  "transfers": [
+    {
+      "to": "shell-box",
+      "from_points": 1,
+      "to_points": 6,
+      "date": "2026-10-14",
+      "source": "https://shellbox.shell.com.ar/conversor",
+      "author": "leopiccioli",
+      "notes": "1 milla LATAM Pass = 6 puntos Shell Box."
+    }
+  ],
+  "expiry": { "rule": "Consultar en el programa.", "source": "https://www.latamairlines.com/ar/es/latam-pass" }
+}
